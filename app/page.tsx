@@ -110,7 +110,7 @@ export default function Home() {
       {/* Footer Section */}
       <footer className="w-full bg-[#BE2532] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
         
-        {/* Logo SDL di Footer: Margin bawah diubah jadi mb-6 agar lebih dekat dengan teks */}
+        {/* Logo SDL di Footer: */}
         <div className="relative w-24 h-24 md:w-28 md:h-28 mb-6">
           <Image 
             src="/images/SimpleLogo.png" 
@@ -120,10 +120,10 @@ export default function Home() {
           />
         </div>
         
-        {/* Grup Teks Kontak & Copyright: gap-1 agar jarak sangat rapat */}
+        {/* Grup Teks Kontak & Copyright */}
         <div className="flex flex-col items-center gap-1">
           
-          {/* Info Kontak: Ukuran teks dibesarkan menjadi text-sm md:text-base */}
+          {/* Info Kontak */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-light text-center px-6 tracking-wide">
             <span>{contactInfo.email}</span>
             <span className="hidden md:inline">|</span>
@@ -132,7 +132,7 @@ export default function Home() {
             <span>IG/TikTok: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a></span>
           </div>
 
-          {/* Baris Copyright: Menggunakan karakter teks © */}
+          {/* Baris Copyright */}
           <div className="flex items-center justify-center text-sm md:text-base font-light mt-1">
             <span className="tracking-widest">&copy; 2026</span>
           </div>
