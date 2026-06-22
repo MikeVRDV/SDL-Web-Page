@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sidiadinoto Design Lab",
-  description: "Architecture & Interiors, Jakarta, ID",
+  title: "Sidiadinoto Design Lab (SDL) | Arsitek Jakarta",
+  description: "Sidiadinoto Design Lab is an architecture and interiors practice based in Jakarta, Indonesia, led by Ansel Sidiadinoto. Focused on thoughtful and contextual design.",
+  keywords: ["sidiadinoto", "sidiadinoto design", "arsitek jakarta", "ansel sidiadinoto", "sdl jakarta", "sdl", "arsitektur", "architecture", "interiors"],
 };
 
 export default function RootLayout({
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+    <html 
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
