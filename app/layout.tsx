@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Sidiadinoto Design Lab (SDL) | Arsitek Jakarta",
   description: "Sidiadinoto Design Lab is an architecture and interiors practice based in Jakarta, Indonesia, led by Ansel Sidiadinoto. Focused on thoughtful and contextual design.",
   keywords: ["sidiadinoto", "sidiadinoto design", "arsitek jakarta", "ansel sidiadinoto", "sdl jakarta", "sdl", "arsitektur", "architecture", "interiors"],
+  verification: {
+    google: "E3r62CnKBCiku_0_sy0s__-20gzKXny4U5lfArUXOp4",
+  },
 };
 
 export default function RootLayout({
