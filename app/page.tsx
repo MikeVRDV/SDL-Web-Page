@@ -6,6 +6,9 @@ const contactInfo = {
   email: "sidiadinotodesignlab@gmail.com",
   ig: "sdl.arch",
   igLink: "https://www.instagram.com/sdl.arch",
+  tiktok: "sdl.arch",
+  tiktokLink: "https://www.tiktok.com/@sdl.arch",
+  portofolioLink: "https://drive.google.com/file/d/1EnkuXQnggSw_7JqwZgvoOv-DOjV_yiHy/view?usp=drive_link"
 };
 
 const col1 = [
@@ -49,6 +52,7 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
+          {/* Kolom Kiri: Logo */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0">
              <Image 
                src="/images/logo-sdl-white.png" 
@@ -58,17 +62,41 @@ export default function Home() {
              />
           </div>
           
-          <div className="w-full md:w-1/2 flex flex-col justify-center text-left text-sm md:text-base leading-relaxed">
-            <div className="space-y-4 font-light max-w-md">
-              <p>We are a small architecture practice based in Jakarta, Indonesia. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
-              <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
-              <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
+          {/* Kolom Kanan: Teks */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
+            {/* Menggunakan gap-4 agar jarak antar segmen proporsional namun tetap padat */}
+            <div className="flex flex-col gap-4 max-w-md">
               
-              <div className="flex flex-col space-y-1 text-xs md:text-sm">
+              {/* Segmen 1: Deskripsi */}
+              <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
+                <p>We are a small architecture practice based in Jakarta, Indonesia. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
+                <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
+                <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
+              </div>
+              
+              {/* Segmen Tengah: Portofolio Link */}
+              <div>
+                <a 
+                  href={contactInfo.portofolioLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[15px] md:text-base font-bold hover:underline"
+                >
+                  Check Our Portofolio
+                </a>
+              </div>
+
+              {/* Segmen 2: Info Kontak */}
+              <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: {contactInfo.wa}</p>
                 <p>{contactInfo.email}</p>
-                <p>IG: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a></p>
+                <p>
+                  IG: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a>
+                  <span className="mx-2">|</span>
+                  TikTok: <a href={contactInfo.tiktokLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.tiktok}</a>
+                </p>
               </div>
+
             </div>
           </div>
 
@@ -110,7 +138,6 @@ export default function Home() {
       {/* Footer Section */}
       <footer className="w-full bg-[#BE2532] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
         
-        {/* Logo SDL di Footer: */}
         <div className="relative w-24 h-24 md:w-28 md:h-28 mb-6">
           <Image 
             src="/images/SimpleLogo.png" 
@@ -120,10 +147,8 @@ export default function Home() {
           />
         </div>
         
-        {/* Grup Teks Kontak & Copyright */}
         <div className="flex flex-col items-center gap-1">
           
-          {/* Info Kontak */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-light text-center px-6 tracking-wide">
             <span>{contactInfo.email}</span>
             <span className="hidden md:inline">|</span>
@@ -132,7 +157,6 @@ export default function Home() {
             <span>IG/TikTok: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a></span>
           </div>
 
-          {/* Baris Copyright */}
           <div className="flex items-center justify-center text-sm md:text-base font-light mt-1">
             <span className="tracking-widest">&copy; 2026</span>
           </div>
