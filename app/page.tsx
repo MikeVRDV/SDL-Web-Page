@@ -56,7 +56,7 @@ export default function Home() {
           {/* Logo */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0">
              <Image 
-               src="/images/logosdl-red.jpg" 
+               src="/images/logosdl-redbg.jpg" 
                alt="SDL Logo"
                fill
                className="object-contain md:object-right"
