@@ -53,17 +53,17 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Kolom Kiri: Logo */}
+          {/* Logo */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0">
              <Image 
-               src="/images/logosdl-redwhite.png" 
+               src="/images/logosdl-red.jpg" 
                alt="SDL Logo"
                fill
                className="object-contain md:object-right"
              />
           </div>
           
-          {/* Kolom Kanan: Teks */}
+          {/* Teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
@@ -74,7 +74,7 @@ export default function Home() {
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
               
-              {/* Segmen Tengah: Portofolio Link */}
+              {/* Link Portofolio */}
               <div>
                 <a 
                   href={contactInfo.portofolioLink} 
@@ -86,7 +86,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Segmen 2: Info Kontak */}
+              {/* Info Kontak */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
