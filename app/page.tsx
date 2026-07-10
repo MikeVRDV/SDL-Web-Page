@@ -2,8 +2,8 @@
 import Image from 'next/image';
 
 const contactInfo = {
-  waText: "+62 821 2387 884", // Nomor WA baru
-  waLink: "https://api.whatsapp.com/send/?phone=628212387884&text&type=phone_number&app_absent=0", // Link WA baru
+  waText: "+62 821 2387 884", 
+  waLink: "https://api.whatsapp.com/send/?phone=628212387884&text&type=phone_number&app_absent=0", 
   email: "sidiadinotodesignlab@gmail.com",
   ig: "sdl.arch",
   igLink: "https://www.instagram.com/sdl.arch",
@@ -56,7 +56,7 @@ export default function Home() {
           {/* Kolom Kiri: Logo */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0">
              <Image 
-               src="/images/logo-sdl-white.png" 
+               src="/images/logosdl-redwhite.png" 
                alt="SDL Logo"
                fill
                className="object-contain md:object-right"
@@ -88,7 +88,6 @@ export default function Home() {
 
               {/* Segmen 2: Info Kontak */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
-                {/* Hyperlink WA baru di Hero */}
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
                 <p>
@@ -153,7 +152,6 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-light text-center px-6 tracking-wide">
             <span>{contactInfo.email}</span>
             <span className="hidden md:inline">|</span>
-            {/* Hyperlink */}
             <span>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></span>
             <span className="hidden md:inline">|</span>
             <span>IG/TikTok: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a></span>
