@@ -2,7 +2,8 @@
 import Image from 'next/image';
 
 const contactInfo = {
-  wa: "+62 812 1007 2314",
+  waText: "+62 821 2387 884", // Nomor WA baru
+  waLink: "https://api.whatsapp.com/send/?phone=628212387884&text&type=phone_number&app_absent=0", // Link WA baru
   email: "sidiadinotodesignlab@gmail.com",
   ig: "sdl.arch",
   igLink: "https://www.instagram.com/sdl.arch",
@@ -64,12 +65,11 @@ export default function Home() {
           
           {/* Kolom Kanan: Teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
-            {/* Menggunakan gap-4 agar jarak antar segmen proporsional namun tetap padat */}
             <div className="flex flex-col gap-4 max-w-md">
               
               {/* Segmen 1: Deskripsi */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
-                <p>We are a small architecture practice based in Jakarta, Indonesia. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
+                <p>We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
                 <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
@@ -88,7 +88,8 @@ export default function Home() {
 
               {/* Segmen 2: Info Kontak */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
-                <p>WA: {contactInfo.wa}</p>
+                {/* Hyperlink WA baru di Hero */}
+                <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
                 <p>
                   IG: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a>
@@ -152,7 +153,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-light text-center px-6 tracking-wide">
             <span>{contactInfo.email}</span>
             <span className="hidden md:inline">|</span>
-            <span>WA: {contactInfo.wa}</span>
+            {/* Hyperlink */}
+            <span>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></span>
             <span className="hidden md:inline">|</span>
             <span>IG/TikTok: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a></span>
           </div>
