@@ -53,20 +53,19 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Animasinya SDL */}
+          {/* Kolom Kiri: Logo Animasi (Video) */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center">
              <video 
                autoPlay 
                muted 
                playsInline
-               preload="auto"
                className="absolute inset-0 w-full h-full object-contain md:object-right"
              >
                <source src="/images/logo-animasi.mp4" type="video/mp4" />
              </video>
           </div>
           
-          {/* Ini deskripsinya */}
+          {/* Kolom Kanan: Teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
@@ -77,7 +76,7 @@ export default function Home() {
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
               
-              {/* Link Portonya SDL */}
+              {/* Segmen Tengah: Portofolio Link */}
               <div>
                 <a 
                   href={contactInfo.portofolioLink} 
@@ -89,7 +88,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Kontak SDL */}
+              {/* Segmen 2: Info Kontak */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
@@ -138,7 +137,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bagian Footernya Janlup */}
+      {/* Footer Section */}
       <footer className="w-full bg-[#BE2532] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
         
         <div className="relative w-24 h-24 md:w-28 md:h-28 mb-6">
