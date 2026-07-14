@@ -53,15 +53,17 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Animasinya */}
-          <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0">
+          {/* Animasinya SDL */}
+          <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center">
              <video 
-               src="/images/logo-animasi.mp4" 
                autoPlay 
                muted 
                playsInline
+               preload="auto"
                className="absolute inset-0 w-full h-full object-contain md:object-right"
-             />
+             >
+               <source src="/images/logo-animasi.mp4" type="video/mp4" />
+             </video>
           </div>
           
           {/* Ini deskripsinya */}
