@@ -1,7 +1,5 @@
-"use client"; 
-
+// app/page.tsx
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 
 const contactInfo = {
   waText: "+62 821 2387 884", 
@@ -47,17 +45,6 @@ const col4 = [
 
 export default function Home() {
   const columns = [col1, col2, col3, col4];
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    // Memaksa video berputar di iOS tanpa mengubah-ubah struktur HTML lagi
-    if (videoRef.current) {
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      videoRef.current.playsInline = true;
-      videoRef.current.play().catch((err) => console.log("iOS Play Handled:", err));
-    }
-  }, []);
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] text-black font-sans">
@@ -65,33 +52,32 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Kolom Kiri: Logo Container (Anti Kedip) */}
+          {/* Video */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
-              <video 
-                ref={videoRef}
-                src="/images/logo-animasi.mp4" 
-                autoPlay 
-                muted 
-                playsInline
-                poster="/images/logosdl-redwhite.png"
-                className="absolute inset-0 w-full h-full object-contain md:object-right"
+              <Image 
+                src="/images/logo-animasi.webp" 
+                alt="SDL Logo Animasi"
+                fill
+                unoptimized={true} // Wajib di-true agar Next.js tidak mematikan animasi WebP nya
+                className="object-contain md:object-right"
+                priority
               />
             </div>
           </div>
           
-          {/* Kolom Kanan: Teks */}
+          {/* Desc */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
-              {/* Segmen 1: Deskripsi */}
+              {/* Desc */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
                 <p>We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
                 <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
               
-              {/* Segmen Tengah: Portofolio Link */}
+              {/* Porto SDL */}
               <div>
                 <a 
                   href={contactInfo.portofolioLink} 
@@ -103,7 +89,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Segmen 2: Info Kontak */}
+              {/* Kontak SDL */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
