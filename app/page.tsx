@@ -53,17 +53,22 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Kolom Kiri: Logo Animasi (Video) */}
-          <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center">
-             <video 
-               autoPlay 
-               muted 
-               playsInline
-               className="absolute inset-0 w-full h-full object-contain md:object-right"
-             >
-               <source src="/images/logo-animasi.mp4" type="video/mp4" />
-             </video>
-          </div>
+          {/* Kolom Kiri: Logo Animasi (Video dengan Jurus Raw HTML Apple Fix) */}
+          <div 
+            className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center"
+            dangerouslySetInnerHTML={{
+              __html: `
+                <video 
+                  src="/images/logo-animasi.mp4" 
+                  autoplay 
+                  muted 
+                  playsinline 
+                  poster="/images/logosdl-redwhite.png"
+                  class="absolute inset-0 w-full h-full object-contain md:object-right"
+                ></video>
+              `
+            }}
+          />
           
           {/* Kolom Kanan: Teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
