@@ -53,7 +53,7 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Ini sudah di conv codecnya */}
+          {/* Animasi Loop */}
           <div 
             className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center"
             dangerouslySetInnerHTML={{
@@ -63,6 +63,9 @@ export default function Home() {
                   autoplay 
                   muted 
                   playsinline 
+                  loop
+                  preload="auto"
+                  controlslist="nodownload"
                   poster="/images/logosdl-redwhite.png"
                   class="absolute inset-0 w-full h-full object-contain md:object-right"
                 ></video>
