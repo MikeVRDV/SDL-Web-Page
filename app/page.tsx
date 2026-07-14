@@ -52,32 +52,32 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Video */}
+          {/* Kolom Kiri: Logo Container (GIF Animasi - Paling Ringan & Kompatibel) */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
               <Image 
-                src="/images/logo-animasi.webp" 
+                src="/images/logo-animasi.gif" 
                 alt="SDL Logo Animasi"
                 fill
-                unoptimized={true} // Wajib di-true agar Next.js tidak mematikan animasi WebP nya
+                unoptimized={true} 
                 className="object-contain md:object-right"
                 priority
               />
             </div>
           </div>
           
-          {/* Desc */}
+          {/* Kolom Kanan: Teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
-              {/* Desc */}
+              {/* Segmen 1: Deskripsi */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
                 <p>We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
                 <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
               
-              {/* Porto SDL */}
+              {/* Segmen Tengah: Portofolio Link */}
               <div>
                 <a 
                   href={contactInfo.portofolioLink} 
@@ -89,7 +89,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Kontak SDL */}
+              {/* Segmen 2: Info Kontak */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
