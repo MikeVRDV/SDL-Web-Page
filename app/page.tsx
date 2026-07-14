@@ -1,7 +1,5 @@
-"use client"; 
-
+// app/page.tsx
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 
 const contactInfo = {
   waText: "+62 821 2387 884", 
@@ -47,56 +45,38 @@ const col4 = [
 
 export default function Home() {
   const columns = [col1, col2, col3, col4];
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      // Penanganan mutlak tingkat native untuk menembus proteksi Safari iOS
-      video.setAttribute('muted', 'true');
-      video.setAttribute('playsinline', 'true');
-      video.muted = true;
-      video.playsInline = true;
-      
-      // Paksa putar video secara terprogram
-      video.play().catch((err) => console.log("iOS Autoplay Handled:", err));
-    }
-  }, []);
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] text-black font-sans">
       
-      <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
+      {/* Background nieh */}
+      <section id="hero" className="min-h-screen bg-[#A51A32] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Kolom Kiri: Logo Container (Video MP4 - Mulus, Tanpa Kedip, Sekali Putar) */}
+          {/* GIF */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
-              <video 
-                ref={videoRef}
-                src="/images/logo-animasi.mp4" 
-                autoPlay 
-                muted 
-                playsInline
-                preload="auto"
-                poster="/images/logosdl-redwhite.png"
-                className="absolute inset-0 w-full h-full object-contain md:object-right"
+              <Image 
+                src="/images/logo-animasi.gif" 
+                alt="SDL Logo Animasi"
+                fill
+                unoptimized={true} 
+                className="object-contain md:object-right"
+                priority
               />
             </div>
           </div>
           
-          {/* Kolom Kanan: Teks */}
+          {/* Harusnya bisa pake flex aja ini teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
-              {/* Segmen 1: Deskripsi */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
                 <p>We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
                 <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
               
-              {/* Segmen Tengah: Portofolio Link */}
               <div>
                 <a 
                   href={contactInfo.portofolioLink} 
@@ -108,7 +88,6 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Segmen 2: Info Kontak */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
@@ -157,7 +136,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer Section */}
       <footer className="w-full bg-[#BE2532] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
         
         <div className="relative w-24 h-24 md:w-28 md:h-28 mb-6">
