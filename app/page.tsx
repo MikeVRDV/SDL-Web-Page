@@ -1,5 +1,7 @@
-// app/page.tsx
+"use client"; 
+
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 const contactInfo = {
   waText: "+62 821 2387 884", 
@@ -45,6 +47,21 @@ const col4 = [
 
 export default function Home() {
   const columns = [col1, col2, col3, col4];
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Penanganan mutlak tingkat native untuk menembus proteksi Safari iOS
+      video.setAttribute('muted', 'true');
+      video.setAttribute('playsinline', 'true');
+      video.muted = true;
+      video.playsInline = true;
+      
+      // Paksa putar video secara terprogram
+      video.play().catch((err) => console.log("iOS Autoplay Handled:", err));
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] text-black font-sans">
@@ -52,16 +69,18 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Kolom Kiri: Logo Container (GIF Animasi - Paling Ringan & Kompatibel) */}
+          {/* Kolom Kiri: Logo Container (Video MP4 - Mulus, Tanpa Kedip, Sekali Putar) */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
-              <Image 
-                src="/images/logo-animasi.gif" 
-                alt="SDL Logo Animasi"
-                fill
-                unoptimized={true} 
-                className="object-contain md:object-right"
-                priority
+              <video 
+                ref={videoRef}
+                src="/images/logo-animasi.mp4" 
+                autoPlay 
+                muted 
+                playsInline
+                preload="auto"
+                poster="/images/logosdl-redwhite.png"
+                className="absolute inset-0 w-full h-full object-contain md:object-right"
               />
             </div>
           </div>
