@@ -49,11 +49,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F1F1F1] text-black font-sans">
       
-      {/* Background nieh */}
-      <section id="hero" className="min-h-screen bg-[#A51A32] flex items-center justify-center px-6 py-12 md:px-24">
+      {/* Warna Background Hero Diperbarui ke #ae1331 */}
+      <section id="hero" className="min-h-screen bg-[#ae1331] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* GIF */}
+          {/* Kolom Kiri: Logo Container (GIF Animasi) */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
               <Image 
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Harusnya bisa pake flex aja ini teks */}
+          {/* Kolom Kanan: Teks */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
@@ -136,7 +136,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="w-full bg-[#BE2532] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
+      {/* Warna Background Footer Diperbarui ke #ae1331 agar serasi */}
+      <footer className="w-full bg-[#ae1331] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
         
         <div className="relative w-24 h-24 md:w-28 md:h-28 mb-6">
           <Image 
