@@ -1,7 +1,7 @@
-"use client"; // Ini adalah kode ajaib agar kita bisa memaksa iOS lewat JavaScript
+"use client"; 
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const contactInfo = {
   waText: "+62 821 2387 884", 
@@ -48,21 +48,21 @@ const col4 = [
 export default function Home() {
   const columns = [col1, col2, col3, col4];
   
-  // Referensi untuk mengontrol video secara langsung
+  const [isClient, setIsClient] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // JavaScript ini akan memaksa iOS Safari memutar video saat web selesai dimuat
-    if (videoRef.current) {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       videoRef.current.playsInline = true;
-      
-      videoRef.current.play().catch((error) => {
-        console.log("Safari masih ngeyel:", error);
-      });
+      videoRef.current.play().catch((err) => console.log("iOS Play Handled:", err));
     }
-  }, []);
+  }, [isClient]);
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] text-black font-sans">
@@ -70,29 +70,44 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#BE2532] flex items-center justify-center px-6 py-12 md:px-24">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Kolom Kiri: Logo Animasi (Video dengan useRef) */}
-          <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center">
-             <video 
-               ref={videoRef}
-               src="/images/logo-animasi.mp4" 
-               autoPlay 
-               muted 
-               playsInline
-               poster="/images/logosdl-redwhite.png"
-               className="absolute inset-0 w-full h-full object-contain md:object-right"
-             />
+          {/* Video */}
+          <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
+            {/* Scale */}
+            <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right transition-all duration-300">
+              {!isClient ? (
+                <Image 
+                  src="/images/logosdl-redwhite.png" 
+                  alt="SDL Logo"
+                  fill
+                  className="object-contain md:object-right"
+                  priority
+                />
+              ) : (
+                <video 
+                  ref={videoRef}
+                  src="/images/logo-animasi.mp4" 
+                  autoPlay 
+                  muted 
+                  playsInline
+                  poster="/images/logosdl-redwhite.png"
+                  className="absolute inset-0 w-full h-full object-contain md:object-right"
+                />
+              )}
+            </div>
           </div>
           
-          {/* Kolom Kanan: Teks */}
+          {/* Deskripsi SDL */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
+              {/* Segmen 1: Deskripsi */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
                 <p>We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
                 <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
                 <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
               </div>
               
+              {/* Porto SDL */}
               <div>
                 <a 
                   href={contactInfo.portofolioLink} 
@@ -104,6 +119,7 @@ export default function Home() {
                 </a>
               </div>
 
+              {/* Kontak SDL */}
               <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
                 <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
                 <p>{contactInfo.email}</p>
