@@ -48,7 +48,7 @@ const col4 = [
 export default function Home() {
   const columns = [col1, col2, col3, col4];
 
-  // State untuk mengontrol kapan setiap teks muncul
+  // Urutannya pake setshow aja
   const [showP1, setShowP1] = useState(false);
   const [showP2, setShowP2] = useState(false);
   const [showP3, setShowP3] = useState(false);
@@ -56,8 +56,8 @@ export default function Home() {
 
   useEffect(() => {
     // ATUR DURASI DI SINI:
-    // 2300 berarti teks pertama muncul 2,3 detik setelah web dibuka.
-    const logoAnimDuration = 2300; 
+    // Diubah menjadi 1200 (1,2 detik) sesuai permintaan
+    const logoAnimDuration = 1400; 
     const delayBetween = 800; // Jeda antar kalimat 0,8 detik
 
     const timer1 = setTimeout(() => setShowP1(true), logoAnimDuration);
@@ -65,7 +65,7 @@ export default function Home() {
     const timer3 = setTimeout(() => setShowP3(true), logoAnimDuration + delayBetween * 2);
     const timer4 = setTimeout(() => setShowContact(true), logoAnimDuration + delayBetween * 3);
 
-    // Membersihkan timer jika komponen ditutup
+    // Harus dibersiin timernya (?)
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
@@ -86,7 +86,7 @@ export default function Home() {
       <section id="hero" className="min-h-screen bg-[#ae1331] flex items-center justify-center px-6 py-12 md:px-24 overflow-hidden">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Gif SDL */}
+          {/* Logooo */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
               <Image 
@@ -100,11 +100,11 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Teks */}
+          {/* Teksssssss */}
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
-              {/* Segmen 1: Deskripsi Berurutan */}
+              {/* Div urutan */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
                 
                 <p className={`${fadeClass} ${showP1 ? visibleClass : hiddenClass}`}>
@@ -121,7 +121,7 @@ export default function Home() {
 
               </div>
               
-              {/* Kontak Porto */}
+              {/* Porto n COntact */}
               <div className={`flex flex-col gap-4 ${fadeClass} ${showContact ? visibleClass : hiddenClass}`}>
                 
                 <div>
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Porto SDL */}
+      {/* Gambar-gambar SDL */}
       <section id="portfolio" className="px-6 py-12 md:px-24 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-[598fr_287fr_603fr_284fr] gap-4 w-full max-w-[1920px] mx-auto">
           
