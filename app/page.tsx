@@ -1,5 +1,7 @@
-// app/page.tsx
+"use client"; 
+
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 const contactInfo = {
   waText: "+62 821 2387 884", 
@@ -46,14 +48,45 @@ const col4 = [
 export default function Home() {
   const columns = [col1, col2, col3, col4];
 
+  // State untuk mengontrol kapan setiap teks muncul
+  const [showP1, setShowP1] = useState(false);
+  const [showP2, setShowP2] = useState(false);
+  const [showP3, setShowP3] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+
+  useEffect(() => {
+    // ATUR DURASI DI SINI:
+    // 2300 berarti teks pertama muncul 2,3 detik setelah web dibuka.
+    const logoAnimDuration = 2300; 
+    const delayBetween = 800; // Jeda antar kalimat 0,8 detik
+
+    const timer1 = setTimeout(() => setShowP1(true), logoAnimDuration);
+    const timer2 = setTimeout(() => setShowP2(true), logoAnimDuration + delayBetween);
+    const timer3 = setTimeout(() => setShowP3(true), logoAnimDuration + delayBetween * 2);
+    const timer4 = setTimeout(() => setShowContact(true), logoAnimDuration + delayBetween * 3);
+
+    // Membersihkan timer jika komponen ditutup
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
+  }, []);
+
+  // Class bantuan untuk membuat efek memudar dan bergeser dari bawah ke atas
+  const fadeClass = "transition-all duration-1000 ease-out transform";
+  const hiddenClass = "opacity-0 translate-y-4";
+  const visibleClass = "opacity-100 translate-y-0";
+
   return (
     <main className="min-h-screen bg-[#F1F1F1] text-black font-sans">
       
       {/* #ae1331 */}
-      <section id="hero" className="min-h-screen bg-[#ae1331] flex items-center justify-center px-6 py-12 md:px-24">
+      <section id="hero" className="min-h-screen bg-[#ae1331] flex items-center justify-center px-6 py-12 md:px-24 overflow-hidden">
         <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 max-w-5xl w-full text-white">
           
-          {/* Ini kalau mau ubah gif */}
+          {/* Gif SDL */}
           <div className="w-full md:w-1/2 relative min-h-[16rem] md:min-h-0 flex items-center justify-center md:justify-end">
             <div className="relative w-full h-full min-h-[16rem] md:min-h-[22rem] max-w-[280px] md:max-w-[380px] transform md:scale-90 md:origin-right">
               <Image 
@@ -71,31 +104,47 @@ export default function Home() {
           <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
             <div className="flex flex-col gap-4 max-w-md">
               
+              {/* Segmen 1: Deskripsi Berurutan */}
               <div className="flex flex-col gap-2 text-[13px] md:text-sm leading-snug font-light">
-                <p>We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong></p>
-                <p>We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.</p>
-                <p>We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong></p>
+                
+                <p className={`${fadeClass} ${showP1 ? visibleClass : hiddenClass}`}>
+                  We are a small architecture practice based in Jakarta, Indonesia, led by <strong className="font-semibold">Ansel Sidiadinoto</strong>. Focused on <strong className="font-semibold">thoughtful and contextual design.</strong>
+                </p>
+                
+                <p className={`${fadeClass} ${showP2 ? visibleClass : hiddenClass}`}>
+                  We start by <strong className="font-semibold">understanding each project's challenges,</strong> then turn those solutions into simple, well-crafted spaces.
+                </p>
+                
+                <p className={`${fadeClass} ${showP3 ? visibleClass : hiddenClass}`}>
+                  We believe good design is not just about how it looks, but how naturally it fits its surroundings and everyday life. The results are <strong className="font-semibold">designs that feel clear, meaningful, and quietly beautiful.</strong>
+                </p>
+
               </div>
               
-              <div>
-                <a 
-                  href={contactInfo.portofolioLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-[15px] md:text-base font-bold hover:underline"
-                >
-                  Check Our Portofolio
-                </a>
-              </div>
+              {/* Kontak Porto */}
+              <div className={`flex flex-col gap-4 ${fadeClass} ${showContact ? visibleClass : hiddenClass}`}>
+                
+                <div>
+                  <a 
+                    href={contactInfo.portofolioLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[15px] md:text-base font-bold hover:underline"
+                  >
+                    Check Our Portofolio
+                  </a>
+                </div>
 
-              <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
-                <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
-                <p>{contactInfo.email}</p>
-                <p>
-                  IG: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a>
-                  <span className="mx-2">|</span>
-                  TikTok: <a href={contactInfo.tiktokLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.tiktok}</a>
-                </p>
+                <div className="flex flex-col gap-1 text-[13px] md:text-sm font-light">
+                  <p>WA: <a href={contactInfo.waLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.waText}</a></p>
+                  <p>{contactInfo.email}</p>
+                  <p>
+                    IG: <a href={contactInfo.igLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.ig}</a>
+                    <span className="mx-2">|</span>
+                    TikTok: <a href={contactInfo.tiktokLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{contactInfo.tiktok}</a>
+                  </p>
+                </div>
+
               </div>
 
             </div>
@@ -104,6 +153,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Porto SDL */}
       <section id="portfolio" className="px-6 py-12 md:px-24 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-[598fr_287fr_603fr_284fr] gap-4 w-full max-w-[1920px] mx-auto">
           
@@ -136,7 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* #ae1331 */}
+      {/* Footer */}
       <footer className="w-full bg-[#ae1331] text-white pt-24 pb-16 flex flex-col items-center justify-center mt-12 md:mt-24">
         
         <div className="relative w-24 h-24 md:w-28 md:h-28 mb-6">
